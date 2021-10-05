@@ -10,7 +10,7 @@ namespace WishList
     {
         public IActionResult Index()
         {
-            return Index();
+            return View();
         }
     }
 }
