@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WishList.Data;
-using WishList.Model;
+using WishList.Models;
 
 namespace WishList.Controllers
 {
@@ -13,9 +13,9 @@ namespace WishList.Controllers
 
         private readonly ApplicationDbContext _context;
 
-        ItemController(ApplicationDbContext param)
+        public ItemController(ApplicationDbContext context)
         {
-            _context = param;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -32,19 +32,18 @@ namespace WishList.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Item myItem)
+        public IActionResult Create(Item item)
         {
-            _context.Items.Add(myItem);
+            _context.Items.Add(item);
             _context.SaveChanges();
-
             return RedirectToAction("Index");
         }
 
 
 
-        public IActionResult Delete(int Id)
+        public IActionResult Delete(int id)
         {
-            Item myI = _context.Items.FirstOrDefault(e => e.Id == Id);
+            Item myI = _context.Items.FirstOrDefault(e => e.Id == id);
             _context.Items.Remove(myI);
             _context.SaveChanges();
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using WishList.Model;
+using WishList.Models;
 
 namespace WishList.Data
 {
@@ -12,7 +12,7 @@ namespace WishList.Data
 
         public DbSet<Item> Items { get; set; }
 
-        ApplicationDbContext(DbContextOptions options) : base(options) {
+        public ApplicationDbContext(DbContextOptions options) : base(options) {
 
         }
 
